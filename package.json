@@ -1,0 +1,11 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "project",
+  "main": "index.js",
+  "author": "ankyoungeun",
+  "homepage": "https://github.com/angyeongeun/NodeJS#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
