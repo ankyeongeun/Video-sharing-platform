@@ -2,6 +2,9 @@ import express from "express";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
+import routes from "./routes";
+
+
 
 const app = express();
 
@@ -9,10 +12,9 @@ const app = express();
 
 
 //routing -handling urls
-
-app.use("/", globalRouter);
-app.use("/user", userRouter);
-app.use("/video", videoRouter);
+app.use(routes.home, globalRouter);
+app.use(routes.users, userRouter);
+app.use(routes.videos, videoRouter);
 
 
 
