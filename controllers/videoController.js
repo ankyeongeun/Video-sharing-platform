@@ -9,7 +9,11 @@ export const search = (req,res) => {
 export const getUpload = (req, res) => res.render("upload", { pageTitle: "Search" });
 
 
-export const postUpload = (req, res) => res.render("postUpload", { pageTitle: "postUpload"});
+export const postUpload = (req, res) => {
+    const {
+        body: { file, title, description }
+    } = req;
+};
 
 
 
