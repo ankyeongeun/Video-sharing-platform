@@ -1,6 +1,16 @@
+import routes from "../routes";
+import Video from "../models/Video";
 
+export const home = async(req,res) => {
+    try {
+        const videos = await Video.find({});
+        res.render("home", { pageTitle: "Home", videos });    
+    } catch (error) {
+        console.log(error);
+        res.render("home", { pageTitle: "Home", videos: [] });//에러가 생겼을 경우 빈 열으로 반환하도록 함       
+    }
+};
 
-export const home = (req,res) => res.render("home", { pageTitle: "Home"});
 export const search = (req,res) => {
     const searchingBy = req.query.query;
     res.render("search", { pageTitle: "Search" , searchingBy: searchingBy});
