@@ -1,15 +1,15 @@
 import routes from "../routes";
 import Video from "../models/Video";
 
-export const home = async(req,res) => {
+export const home = async (req, res) => {
     try {
-        const videos = await Video.find({});
-        res.render("home", { pageTitle: "Home", videos });    
+      const videos = await Video.find({});
+      res.render("home", { pageTitle: "Home", videos });
     } catch (error) {
-        console.log(error);
-        res.render("home", { pageTitle: "Home", videos: [] });//에러가 생겼을 경우 빈 열으로 반환하도록 함       
+      console.log(error);
+      res.render("home", { pageTitle: "Home", videos: [] });
     }
-};
+  };
 
 export const search = (req,res) => {
     const searchingBy = req.query.query;
@@ -47,7 +47,7 @@ export const videoDetail = async(req, res) => {
     try {
         const video = await Video.findById({_id: id});
         console.log(video);
-        res.render("videoDetail", { pageTitle: "videoDetail", video:video });//video 변수를 template에 전달! 
+        res.render("videoDetail", { pageTitle: video.title, video:video });//video 변수를 template에 전달! 
         
     } catch (error) {
         console.log(error);
@@ -85,7 +85,17 @@ export const postEditVideo = async(req, res) => {
     } catch (error) {
         res.redirect(routes.home);
     }
-}
+};
 
 
-export const deleteVideo = (req, res) => res.render("deleteVideo", { pageTitle: "deleteVideo"});
+export const deleteVideo = async(req, res) => {
+    const {
+        params: { id }// url에서 가져옴
+    } =  req;
+    try {
+        await Video.findOneAndRemove({_id: id});
+
+    } catch (error) {}
+        res.redirect(routes.home);        
+    
+};
