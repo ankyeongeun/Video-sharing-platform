@@ -42,12 +42,12 @@ export const postUpload = async (req, res) => {
 
 export const videoDetail = async(req, res) => {
     const {
-        params: { id }
+        params: { id }// url에서 가져옴
     } =  req;
     try {
-        const video = await Video.findById(id);
+        const video = await Video.findById({_id: id});
         console.log(video);
-        res.render("videoDetail", { pageTitle: "videoDetail", video }); 
+        res.render("videoDetail", { pageTitle: "videoDetail", video:video });//video 변수를 template에 전달! 
         
     } catch (error) {
         console.log(error);
@@ -56,5 +56,36 @@ export const videoDetail = async(req, res) => {
     }
 
 };
-export const editVideo = (req, res) => res.render("editVideo", { pageTitle: "editVideo"});
+export const getEditVideo = async(req, res) => {
+    const {
+        params: { id }// url에서 가져옴
+    } =  req;
+    try {
+        const video = await Video.findById({_id: id});
+        console.log(video);
+        res.render("editVideo", { pageTitle: "videoEdit", video:video });//video 변수를 template에 전달! 
+        
+    } catch (error) {
+        console.log(error);
+        res.redirect(routes.home);
+        
+    }
+};
+
+
+export const postEditVideo = async(req, res) => {
+    const {
+        params: { id },// url에서 가져옴
+        body: { title, description}
+    } =  req;
+
+    try {
+      await Video.findOneAndUpdate({_id: id}, { title: title, description: description });
+      res.redirect(routes.videoDetail(id));       
+    } catch (error) {
+        res.redirect(routes.home);
+    }
+}
+
+
 export const deleteVideo = (req, res) => res.render("deleteVideo", { pageTitle: "deleteVideo"});

@@ -27,6 +27,6 @@ export const logout = (req,res) => {
     res.redirect(routes.home);
 };
 export const users = (req,res) => res.render('users');
-export const userDetail = (req,res) => res.render('user detail');
+export const userDetail = (req,res) => res.render('userdetail');
 export const editProfile = (req,res) => res.render('Edit profile');
 export const changePassword = (req,res) => res.render('Change Password');
