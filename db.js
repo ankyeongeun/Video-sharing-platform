@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGO_URL,
 const db = mongoose.connection;
 
 
-const handleOpen = () => console.log("connected to db");
+const handleOpen = () => console.log("✌ connected to db");
 const handleError = () => error => console.log("error on DB connection!");
 
 db.once("open", handleOpen);
