@@ -10,7 +10,8 @@ import { localsMiddleware } from "./middlewares";
 const app = express();
 
 app.set("view engine", "pug");
-app.use(bodyParser.json());
+app.use("/uploads", express.static("uploads"));
+app.use(bodyParser.json());//enable to use body data 
 app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use(localsMiddleware);

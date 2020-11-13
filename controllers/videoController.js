@@ -19,14 +19,42 @@ export const search = (req,res) => {
 export const getUpload = (req, res) => res.render("upload", { pageTitle: "Search" });
 
 
-export const postUpload = (req, res) => {
+export const postUpload = async (req, res) => {
     const {
-        body: { file, title, description }
+        body: { title, description},
+        file: { path }
     } = req;
+    const newVideo = await Video.create({
+        fileUrl: path,
+        title: title
+    });
+    console.log(newVideo);
+
+
+    res.redirect(routes.videoDetail(newVideo.id));
+    //근데 아이디가 어딧는데?
+
+
+    
 };
 
 
 
-export const videoDetail = (req, res) => res.render("videoDetail", { pageTitle: "videoDetail"});
+export const videoDetail = async(req, res) => {
+    const {
+        params: { id }
+    } =  req;
+    try {
+        const video = await Video.findById(id);
+        console.log(video);
+        res.render("videoDetail", { pageTitle: "videoDetail", video }); 
+        
+    } catch (error) {
+        console.log(error);
+        res.redirect(routes.home);
+        
+    }
+
+};
 export const editVideo = (req, res) => res.render("editVideo", { pageTitle: "editVideo"});
 export const deleteVideo = (req, res) => res.render("deleteVideo", { pageTitle: "deleteVideo"});
