@@ -1,5 +1,6 @@
 import routes from "../routes";
 import Video from "../models/Video";
+import { query } from "express";
 
 export const home = async (req, res) => {
     try {
@@ -11,9 +12,20 @@ export const home = async (req, res) => {
     }
   };
 
-export const search = (req,res) => {
-    const searchingBy = req.query.query;
-    res.render("search", { pageTitle: "Search" , searchingBy: searchingBy});
+export const search = async (req, res) => {
+    const {
+      query: { query: searchingBy }
+    } = req;
+    console.log(searchingBy);
+    let videos = [];
+    try {
+      videos = await Video.find({
+        title: { $regex: searchingBy, $options: "i" }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    res.render("search", { pageTitle: "Search", searchingBy, videos });
 };
 
 export const getUpload = (req, res) => res.render("upload", { pageTitle: "Search" });
