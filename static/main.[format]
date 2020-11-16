@@ -31,7 +31,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scs
 /*! runtime requirements:  */
 /***/ (() => {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (1:5)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n> body {\\n|     background-color: red;\\n| }\");\n\n//# sourceURL=webpack://project/./assets/scss/styles.scss?");
+eval("throw new Error(\"Module build failed (from ./node_modules/extract-text-webpack-plugin/dist/loader.js):\\nError: \\\"extract-text-webpack-plugin\\\" loader is used without the corresponding plugin, refer to https://github.com/webpack/extract-text-webpack-plugin for the usage example\\n    at Object.pitch (C:\\\\Users\\\\ruddm\\\\nodeJS_project\\\\NodeJS\\\\node_modules\\\\extract-text-webpack-plugin\\\\dist\\\\loader.js:59:11)\");\n\n//# sourceURL=webpack://project/./assets/scss/styles.scss?");
 
 /***/ })
 
