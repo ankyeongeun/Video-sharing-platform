@@ -2,10 +2,11 @@ header.header
     .header__wrapper
         .header__column
             a(href=routes.home)
-                i.fab.fa-youtube
+                i.fas.fa-share-alt
+                
         .header__column
             form(action=routes.search, method="get")
-                input(type="text", placeholder="Search by term...", name="term")
+                input(type="text", placeholder="Search", name="term")
         .header__column
             ul
                 if !user.isAuthenticated

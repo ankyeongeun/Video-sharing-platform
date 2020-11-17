@@ -14,9 +14,8 @@ export const home = async (req, res) => {
 
 export const search = async (req, res) => {
     const {
-      query: { query: searchingBy }
+      query: { term: searchingBy }
     } = req;
-    console.log(searchingBy);
     let videos = [];
     try {
       videos = await Video.find({
