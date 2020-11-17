@@ -11,7 +11,7 @@ export const localsMiddleware = (req, res, next) => {
     res.locals.siteName = "YouTube-clone";
     res.locals.routes = routes;
     res.locals.user = {
-        isAuthenticated: false,
+        isAuthenticated: true,
         id: 1
     };
 
