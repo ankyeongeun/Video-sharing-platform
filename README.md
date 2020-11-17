@@ -1,7 +1,7 @@
 # NodeJS
 Building Restful API using NodeJS
 
-video-sharing platform build up
+video-sharing platform in NodeJS
 
 node.js project architecture 참고자료 : 
 
