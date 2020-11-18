@@ -10,10 +10,7 @@ const multerVideo = multer({ dest: "uploads/videos/" });
 export const localsMiddleware = (req, res, next) => {
     res.locals.siteName = "YouTube-clone";
     res.locals.routes = routes;
-    res.locals.user = {
-        isAuthenticated: false,
-        id: 1
-    };
+    res.locals.user = req.user || {};
 
     next(); //다음에 있는 함수로 넘어가도록..
     
