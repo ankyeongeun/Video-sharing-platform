@@ -8,7 +8,7 @@ const multerVideo = multer({ dest: "uploads/videos/" });
 
 //잘 이해안되는 부분
 export const localsMiddleware = (req, res, next) => {
-    res.locals.siteName = "YouTube-clone";
+    res.locals.siteName = "video-sharing";
     res.locals.routes = routes;
     res.locals.user = req.user || {};
 
