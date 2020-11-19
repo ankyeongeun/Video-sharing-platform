@@ -25,11 +25,13 @@ app.use(bodyParser.json());//enable to use body data
 app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use(morgan("dev"));
-app.use(session({
+app.use(
+    session({
     secret: process.env.COOKIE_SECRET,
     resave: true,
     saveUninitialized: false
-}))
+    })
+);
 
 
 app.use(passport.initialize());
