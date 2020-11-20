@@ -11,7 +11,7 @@ export const postJoin = async(req, res, next) => {
     } = req;
     if( password !== password2) {
         res.status(400);
-        res.render("join", { pageTitle: "Join"});
+        res.render("join", { pageTitle: "Join" });
     }else{
         try {
             const user = await User({
