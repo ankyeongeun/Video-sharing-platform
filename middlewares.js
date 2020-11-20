@@ -10,7 +10,7 @@ const multerVideo = multer({ dest: "uploads/videos/" });
 export const localsMiddleware = (req, res, next) => {
     res.locals.siteName = "video-sharing";
     res.locals.routes = routes;
-    res.locals.user = req.user || {};
+    res.locals.user = req.user || {}; //user가 존재하거나 하지않거나...
 
     next(); //다음에 있는 함수로 넘어가도록..
     
