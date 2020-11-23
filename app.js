@@ -5,15 +5,18 @@ import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
 import session from "express-session";
+import MongoStore from "connect-mongo";
+import mongoose from "mongoose";
 import { localsMiddleware } from "./middlewares";
 import cookieParser from "cookie-parser";
 import passport from "./passport";
 import morgan from "morgan";
 
 
-// import "./passport";
 
 const app = express();
+
+const CookieStore = MongoStore(session);
 
 console.log(process.env.COOKIE_SECRET);
 
@@ -29,7 +32,8 @@ app.use(
     session({
     secret: process.env.COOKIE_SECRET,
     resave: true,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new CookieStore({mongooseConnection: mongoose.connection})
     })
 );
 
