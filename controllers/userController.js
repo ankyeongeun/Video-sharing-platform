@@ -70,6 +70,12 @@ export const githubLoginCallback = async (accessToken, refreshToken, profile, cb
     }
 };
 
+export const getMe = (req, res) => {
+    res.render("userDetail", {
+        pageTitle: "User Detail", user: req.user });
+};
+
+
 export const postGithubLogin = (req,res) => {
     res.redirect(routes.home);
 };
